@@ -5,10 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class PaymentDto {
 
@@ -26,4 +22,57 @@ public class PaymentDto {
 
     @NotBlank(message = "Payment mode is required")
     private String paymentMode; // UPI, CARD, NETBANKING
+
+
+    public PaymentDto() {
+    }
+
+    public PaymentDto(Long id, Long purchaseId, Double amount, String paymentDate, String paymentMode) {
+        this.id = id;
+        this.purchaseId = purchaseId;
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+        this.paymentMode = paymentMode;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPurchaseId() {
+        return purchaseId;
+    }
+
+    public void setPurchaseId(Long purchaseId) {
+        this.purchaseId = purchaseId;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public String getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(String paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public String getPaymentMode() {
+        return paymentMode;
+    }
+
+    public void setPaymentMode(String paymentMode) {
+        this.paymentMode = paymentMode;
+    }
 }

@@ -29,4 +29,5 @@ public class AuthController {
                 ApiResponse.success(authResponse, "Login successful")
         );
     }
+
 }

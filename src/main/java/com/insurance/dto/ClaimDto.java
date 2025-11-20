@@ -5,10 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 public class ClaimDto {
 
@@ -26,4 +22,65 @@ public class ClaimDto {
 
     private String status;
     private String createdDate;
+
+
+    public ClaimDto() {
+    }
+
+    public ClaimDto(Long id, Long purchaseId, Double claimAmount, String reason, String status, String createdDate) {
+        this.id = id;
+        this.purchaseId = purchaseId;
+        this.claimAmount = claimAmount;
+        this.reason = reason;
+        this.status = status;
+        this.createdDate = createdDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPurchaseId() {
+        return purchaseId;
+    }
+
+    public void setPurchaseId(Long purchaseId) {
+        this.purchaseId = purchaseId;
+    }
+
+    public Double getClaimAmount() {
+        return claimAmount;
+    }
+
+    public void setClaimAmount(Double claimAmount) {
+        this.claimAmount = claimAmount;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
 }
