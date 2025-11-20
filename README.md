@@ -131,3 +131,127 @@ and
 
 
 <img width="1536" height="1024" alt="erd-diagram" src="https://github.com/user-attachments/assets/991a1228-b429-4116-bb9d-3d5558c19b67" />
+
+
+**📸 Swagger Screenshots**
+<img width="1901" height="874" alt="swagger-home" src="https://github.com/user-attachments/assets/bd286341-9a53-4366-af4f-90757ff2729a" />
+
+<img width="1827" height="539" alt="swagger-customers" src="https://github.com/user-attachments/assets/c797d565-5eb3-4466-88fb-67f2585536d6" />
+
+<img width="1853" height="427" alt="swagger-policies" src="https://github.com/user-attachments/assets/3cfa08c3-011e-4a74-9fcb-b73e9c918d82" />
+
+<img width="1838" height="276" alt="swagger-purchase" src="https://github.com/user-attachments/assets/5dc7fa71-7239-4d63-a6dc-7323e3e3a112" />
+
+<img width="1884" height="360" alt="swagger-claims" src="https://github.com/user-attachments/assets/ceaf58bc-efcb-4ec2-ab82-c648f9e1854f" />
+
+<img width="1841" height="293" alt="swagger-payments" src="https://github.com/user-attachments/assets/9d43d47c-90ce-4113-8e61-3bb0d2f7596c" />
+
+<img width="1816" height="152" alt="swagger-auth" src="https://github.com/user-attachments/assets/af9b5764-ae7f-42b3-aa99-3f2a72f46db9" />
+
+
+**🔁 ApiResponse Format**
+  **- Every API returns:**
+       {
+           "success": true,
+           "message": "Policy created successfully",
+           "data": {},
+           "timestamp": "2025-11-18T12:00:00"
+        }
+On error:
+        {
+           "success": false,
+           "message": "Validation failed",
+           "errors": {
+                    "email": "Invalid email format"
+                     },
+           "timestamp": "2025-11-18T12:00:00"
+         }
+
+
+**⚠ Custom Exceptions**
+ - NotFoundException
+ - BadRequestException
+ - UnauthorizedException
+ - Handled by GlobalExceptionHandler.
+
+**🧪 API Endpoints Overview**
+**🔐 Auth**
+- POST /api/auth/login
+- POST /api/customers/register
+
+**👤 Customer**
+- GET /api/customers
+- GET /api/customers/{id}
+- GET /api/customers/email/{email}
+- DELETE /api/customers/{id}
+
+**🛡 Policy**
+- POST /api/policies       (Admin)
+- PUT  /api/policies/{id}  (Admin)
+- DELETE /api/policies/{id} (Admin)
+- GET /api/policies
+- GET /api/policies/{id}
+
+**📝 Policy Purchase**
+- POST /api/purchases       (Customer)
+- GET  /api/purchases/{id}
+- GET  /api/purchases/customer/{customerId}
+
+**📄 Claim**
+- POST /api/claims
+- PUT  /api/claims/{id}/status   (Admin)
+- GET  /api/claims/{id}
+- GET  /api/claims/purchase/{purchaseId}
+
+**💳 Payment**
+- POST /api/payments
+- GET  /api/payments/{id}
+- GET  /api/payments/purchase/{purchaseId}
+
+**🧪 Postman Testing Flow**
+  **1️⃣ Register Customer**
+  - POST → /api/customers/register
+
+  **2️⃣ Login**
+  - POST → /api/auth/login
+  - Copy JWT token
+
+  **3️⃣ Add JWT in Postman**
+  - Headers → Authorization → Bearer <token>
+
+  **4️⃣ Test protected endpoints**
+  - GET /api/policies
+
+
+**🚀 Run the Application**
+  **1. Configure database in application.properties**
+  - spring.datasource.url=jdbc:mysql://localhost:3306/insurance_db
+  - spring.datasource.username=root
+  - spring.datasource.password=1234
+
+  **2. Install dependencies**
+  - mvn clean install
+
+  **3. Run**
+  - mvn spring-boot:run
+
+**🌐 Swagger UI**
+- http://localhost:8080/swagger-ui/index.html
+
+**☁ Deployment Guide**
+  **Option 1: Railway.app**
+  ✔ Free
+  ✔ Simple
+  ✔ Auto-deployment from GitHub
+
+  **Option 2: Render.com**
+  ✔ Easy environment setup
+  ✔ Supports Java builds
+
+**Guide includes:**
+- Create new service
+- Connect GitHub
+- Add environment variables
+- Run mvn package
+- Deploy JAR
+
